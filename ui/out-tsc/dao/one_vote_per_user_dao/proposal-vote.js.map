@@ -1,0 +1,1 @@
+{"version":3,"file":"proposal-vote.js","sourceRoot":"","sources":["../../../src/dao/one_vote_per_user_dao/proposal-vote.ts"],"names":[],"mappings":"","sourcesContent":["import { Record, ActionHash, EntryHash, AgentPubKey } from '@holochain/client';\n\nexport interface ProposalVote { \n  proposal_page_hash: ActionHash\n;\n\n  vote: boolean\n;\n}\n"]}

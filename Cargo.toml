@@ -1,0 +1,19 @@
+[profile.dev]
+opt-level = "z"
+
+[profile.release]
+opt-level = "z"
+
+[workspace]
+members = ["dnas/*/zomes/coordinator/*", "dnas/*/zomes/integrity/*"]
+
+[workspace.dependencies]
+hdi = "0.1"
+hdk = "0.0.157"
+serde = "1"
+
+[workspace.dependencies.one_vote_per_user_dao]
+path = "dnas/dao/zomes/coordinator/one_vote_per_user_dao"
+
+[workspace.dependencies.one_vote_per_user_dao_integrity]
+path = "dnas/dao/zomes/integrity/one_vote_per_user_dao_integrity"

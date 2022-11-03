@@ -1,0 +1,12 @@
+[package]
+name = "one_vote_per_user_dao_integrity"
+version = "0.0.1"
+edition = "2021"
+
+[lib]
+crate-type = ["cdylib", "rlib"]
+name = "one_vote_per_user_dao_integrity"
+
+[dependencies]
+hdi = { workspace = true }
+serde = { workspace = true }

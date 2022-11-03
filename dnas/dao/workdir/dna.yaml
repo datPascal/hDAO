@@ -1,0 +1,19 @@
+---
+manifest_version: "1"
+name: dao
+integrity:
+  network_seed: ~
+  properties: ~
+  origin_time: 1667077057194461
+  zomes:
+    - name: one_vote_per_user_dao_integrity
+      hash: ~
+      bundled: "../../../target/wasm32-unknown-unknown/release/one_vote_per_user_dao_integrity.wasm"
+      dependencies: ~
+coordinator:
+  zomes:
+    - name: one_vote_per_user_dao
+      hash: ~
+      bundled: "../../../target/wasm32-unknown-unknown/release/one_vote_per_user_dao.wasm"
+      dependencies:
+        - name: one_vote_per_user_dao_integrity

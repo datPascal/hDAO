@@ -1,0 +1,1 @@
+{"version":3,"file":"proposal-page.js","sourceRoot":"","sources":["../../../src/dao/one_vote_per_user_dao/proposal-page.ts"],"names":[],"mappings":"","sourcesContent":["import { Record, ActionHash, EntryHash, AgentPubKey } from '@holochain/client';\n\nexport interface ProposalPage { \n  content: string\n;\n\n  title: string\n;\n}\n"]}
