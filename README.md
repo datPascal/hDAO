@@ -1,2 +1,2 @@
 # hDAO
-DAO Applikation / DNA für Holochain. 
+DAO Applikation / DNA for Holochain. 
