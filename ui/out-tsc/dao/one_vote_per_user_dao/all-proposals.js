@@ -43,4 +43,4 @@ AllProposals = __decorate([
     customElement('all-proposals')
 ], AllProposals);
 export { AllProposals };
-//# sourceMappingURL=all-proposals.js.map
+//# sourceMappingURL=all-proposals.js.mapproposals

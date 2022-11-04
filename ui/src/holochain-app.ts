@@ -12,6 +12,10 @@ import { appWebsocketContext, appInfoContext } from './contexts';
 import './dao/one_vote_per_user_dao/create-proposal-page';
 import './dao/one_vote_per_user_dao/all-proposals';
 
+enum PageView {
+  AllProposals,
+  CreateProposal,
+}
 
 @customElement('holochain-app')
 export class HolochainApp extends LitElement {
@@ -25,6 +29,9 @@ export class HolochainApp extends LitElement {
   @property({ type: Object })
   appInfo!: InstalledAppInfo;
 
+  @state()
+  pageView: PageView = PageView.AllProposals;
+
   async firstUpdated() {
     this.appWebsocket = await AppWebsocket.connect(
       `ws://localhost:${process.env.HC_PORT}`
@@ -37,6 +44,21 @@ export class HolochainApp extends LitElement {
     this.loading = false;
   }
 
+  createProposal(e: CustomEvent) {
+
+  }
+
+  renderContent() {
+    if (this.pageView == PageView.CreateProposal) {
+      return html`
+      <div style="display: flex; flex-direction: column; width: 50%;">
+        <create-proposal-page @create-proposal=${()  => this.pageView = PageView.CreateProposal} ></create-proposal-page>
+      </div>
+      `
+    } else if (this.pageView == PageView.AllProposals) {
+        return html`<all-proposals></all-proposals>`
+    }
+  }
   
   render() {
     if (this.loading)
@@ -44,21 +66,18 @@ export class HolochainApp extends LitElement {
         <mwc-circular-progress indeterminate></mwc-circular-progress>
       `;
 
-    return html`
-      <main>
+else {
+  return html`
+    <main style="width: 100%;">
+    <div class="title-bar">
+      <h1>hDAO</h1>
+    </div>
+      ${ this.renderContent() }
+    </main>
+  `;
+}
 
-        <h1>hDAO</h1>
-        <h2>for everyone loving DAO'S</h2>
-
-        <div id="content">
-
-          <create-proposal-page> </create-proposal-page>
-          <all-proposals> </all-proposals>
-
-        </div>
-      </main>
-    `;
-  }
+}
 
   static styles = css`
     :host {
