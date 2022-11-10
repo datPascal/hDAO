@@ -34,22 +34,16 @@ let CreateProposalPage = class CreateProposalPage extends LitElement {
     }
     render() {
         return html `
-
-        
       <div style="display: flex; flex-direction: column">
-        <span style="font-size: 18px">Create ProposalPage</span>
-        
-          <input type="button" onclick="location.href='./all-proposals';" value="Go to all proposals" />
+        <div style="display: flex; flex: 1; flex-direction: column; align-items: center;">
+        <h1 style="font-family: 'Space Mono'; color: #183E29">Proposal Creation</h1>
+      </div>
 
-          <mwc-textarea label="Proposal Headline" @input=${(e) => { this._title = e.target.value; }}></mwc-textarea>
+          <mwc-textarea outlined label="Proposal Title" @input=${(e) => { this._content = e.target.value; }}></mwc-textarea>
+          <mwc-textfield outlined label="Proposal Text" @input=${(e) => { this._title = e.target.value; }}></mwc-textfield>
 
-          <mwc-textarea style = "font-size: 50px" label="Proposal Describtion" @input=${(e) => { this._content = e.target.value; }}></mwc-textarea>
-          
-        <mwc-button 
-          label="Create ProposalPage"
-          .disabled=${!this.isProposalPageValid()}
-          @click=${() => this.createProposalPage()}
-        ></mwc-button>
+        <div><button @click=${this.createProposalPage}>Create Proposal</button></div>
+
     </div>`;
     }
 };

@@ -30,14 +30,17 @@ let HolochainApp = class HolochainApp extends LitElement {
     renderContent() {
         if (this.pageView == PageView.CreateProposal) {
             return html `
-      <div style="display: flex; flex-direction: column; width: 50%;">
-        <create-proposal-page @create-proposal=${() => this.pageView = PageView.CreateProposal} ></create-proposal-page>
+            <div style="display: flex; flex-direction: column; width: 50%;">
+        <create-proposal-page @create-proposal=${() => this.pageView = PageView.CreateProposal}></create-proposal-page>
       </div>
       `;
         }
         else if (this.pageView == PageView.AllProposals) {
             return html `<all-proposals></all-proposals>`;
         }
+    }
+    showAllProposals() {
+        return html `<all-proposals></all-proposals>`;
     }
     render() {
         if (this.loading)
@@ -46,13 +49,21 @@ let HolochainApp = class HolochainApp extends LitElement {
       `;
         else {
             return html `
-    <main style="width: 100%;">
-    <div class="title-bar">
-      <h1>hDAO</h1>
-    </div>
-      ${this.renderContent()}
-    </main>
-  `;
+        <main style="width: 100%;">
+        <body>
+          <nav class="navMenu">
+            <a href='/dao/one_vote_per_user_dao/all-proposals'>All Proposals</a>
+            <a href="./dao/one_vote_per_user_dao/create-proposal-page">Create Proposal</a>
+          </nav>
+        </body>
+        <div class="title-bar">
+          <h1>hDAO</h1>
+          <create-proposal-page></create-proposal-page>
+          <button class = "button" onclick=showAllProposals()> Show all Proposals </button>
+        </div>
+          ${this.renderContent()}
+        </main>
+      `;
         }
     }
 };
@@ -71,17 +82,103 @@ HolochainApp.styles = css `
       background-color: var(--lit-element-background-color);
     }
 
+    @font-face {
+      font-family: Montserrat;
+      src: url(dnas/dao/assets/Montserrat/static/Montserrat-Black.ttf) format("truetype");
+    }
+
     main {
       flex-grow: 1;
     }
-
-    .app-footer {
-      font-size: calc(12px + 0.5vmin);
-      align-items: center;
+    ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+    }
+    .title-bar {
+      border: 2px solid #183E29;
+      box-shadow: 9px 12px #183E29;
+      background: #FCF1E9;
+      font-family: 'Space Mono';
+      margin: 10px 40px;
+    }
+    .button {
+      border: none;
+      color: white;
+      padding: 15px 32px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      margin: 4px 2px;
+      cursor: pointer;
+    }
+    * {
+      margin: 0;
+      padding: 0;
+      -webkit-box-sizing: border-box;
+      box-sizing: border-box;
     }
 
-    .app-footer a {
-      margin-left: 5px;
+    body {
+      background: #272727;
+      font-family: "Montserrat";
+    }
+
+    .navMenu {
+      position: absolute;
+      top: 80%;
+      left: 50%;
+      -webkit-transform: translate(-50%, -50%);
+      transform: translate(-50%, -50%);
+    }
+
+    .navMenu a {
+      color: #000000;
+      text-decoration: none;
+      font-size: 1.2em;
+      text-transform: uppercase;
+      font-weight: 500;
+      display: inline-block;
+      width: 400px;
+      -webkit-transition: all 0.2s ease-in-out;
+      transition: all 0.2s ease-in-out;
+    }
+
+    .navMenu a:hover {
+      color: #fddb3a;
+    }
+
+    .navMenu a:nth-child(1):hover ~ .dot {
+      -webkit-transform: translateX(30px);
+      transform: translateX(30px);
+      -webkit-transition: all 0.2s ease-in-out;
+      transition: all 0.2s ease-in-out;
+      opacity: 1;
+    }
+
+    .navMenu a:nth-child(2):hover ~ .dot {
+      -webkit-transform: translateX(110px);
+      transform: translateX(120px);
+      -webkit-transition: all 0.2s ease-in-out;
+      transition: all 0.2s ease-in-out;
+      opacity: 1;
+    }
+
+    .navMenu a:nth-child(3):hover ~ .dot {
+      -webkit-transform: translateX(200px);
+      transform: translateX(200px);
+      -webkit-transition: all 0.2s ease-in-out;
+      transition: all 0.2s ease-in-out;
+      opacity: 1;
+    }
+
+    .navMenu a:nth-child(4):hover ~ .dot {
+      -webkit-transform: translateX(285px);
+      transform: translateX(285px);
+      -webkit-transition: all 0.2s ease-in-out;
+      transition: all 0.2s ease-in-out;
+      opacity: 1;
     }
   `;
 __decorate([

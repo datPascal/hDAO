@@ -59,16 +59,15 @@ export class CreateProposalPage extends LitElement {
   render() {
     return html`
       <div style="display: flex; flex-direction: column">
-        <span style="font-size: 18px">Create ProposalPage</span>
+        <div style="display: flex; flex: 1; flex-direction: column; align-items: center;">
+        <h1 style="font-family: 'Space Mono'; color: #183E29">Proposal Creation</h1>
+      </div>
 
-          <mwc-textarea outlined label="" @input=${(e: CustomEvent) => { this._content = (e.target as any).value;} }></mwc-textarea>
-          <mwc-textfield outlined label="" @input=${(e: CustomEvent) => { this._title = (e.target as any).value; } }></mwc-textfield>
+          <mwc-textarea outlined label="Proposal Title" @input=${(e: CustomEvent) => { this._content = (e.target as any).value;} }></mwc-textarea>
+          <mwc-textfield outlined label="Proposal Text" @input=${(e: CustomEvent) => { this._title = (e.target as any).value; } }></mwc-textfield>
 
-        <mwc-button 
-          label="Create ProposalPage"
-          .disabled=${!this.isProposalPageValid()}
-          @click=${() => this.createProposalPage()}
-        ></mwc-button>
+        <div><button @click=${this.createProposalPage}>Create Proposal</button></div>
+
     </div>`;
   }
 }
