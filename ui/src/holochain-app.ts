@@ -1,5 +1,6 @@
 import { LitElement, css, html } from 'lit';
 import { customElement, property, state } from 'lit/decorators.js';
+
 import {
   AppWebsocket,
   ActionHash,
@@ -43,11 +44,6 @@ export class HolochainApp extends LitElement {
 
     this.loading = false;
   }
-
-  createProposal(e: CustomEvent) {
-
-  }
-
   
 
   renderContent() {
@@ -73,8 +69,8 @@ export class HolochainApp extends LitElement {
         <main style="width: 100%;">
         <body>
           <nav class="navMenu">
-            <a href='/dao/one_vote_per_user_dao/all-proposals'>All Proposals</a>
-            <a href="./dao/one_vote_per_user_dao/create-proposal-page">Create Proposal</a>
+            <a href='/home/datpascal/Holo/hDAO/ui/src/dao/one_vote_per_user_dao/all-proposals.ts'>All Proposals</a>
+            <a href="./out-tsc/dao/one_vote_per_user_dao/create-proposal-page.ts">Create Proposal</a>
           </nav>
         </body>
         <div class="title-bar">

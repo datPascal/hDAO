@@ -25,8 +25,6 @@ let HolochainApp = class HolochainApp extends LitElement {
         });
         this.loading = false;
     }
-    createProposal(e) {
-    }
     renderContent() {
         if (this.pageView == PageView.CreateProposal) {
             return html `
@@ -49,8 +47,8 @@ let HolochainApp = class HolochainApp extends LitElement {
         <main style="width: 100%;">
         <body>
           <nav class="navMenu">
-            <a href='/dao/one_vote_per_user_dao/all-proposals'>All Proposals</a>
-            <a href="http://google.com">Create Proposal</a>
+            <a href='/home/datpascal/Holo/hDAO/ui/src/dao/one_vote_per_user_dao/all-proposals.ts'>All Proposals</a>
+            <a href="./out-tsc/dao/one_vote_per_user_dao/create-proposal-page.ts">Create Proposal</a>
           </nav>
         </body>
         <div class="title-bar">
