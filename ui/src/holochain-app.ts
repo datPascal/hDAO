@@ -12,8 +12,6 @@ import { appWebsocketContext, appInfoContext } from './contexts';
 import './dao/one_vote_per_user_dao/create-proposal-page';
 import './dao/one_vote_per_user_dao/all-proposals';
 
-
-
 enum PageView {
   AllProposals,
   CreateProposal,
@@ -32,7 +30,7 @@ export class HolochainApp extends LitElement {
   appInfo!: InstalledAppInfo;
 
   @state()
-  pageView: PageView = PageView.AllProposals;
+  pageView: PageView = PageView.CreateProposal;
 
   async firstUpdated() {
     this.appWebsocket = await AppWebsocket.connect(
@@ -50,6 +48,8 @@ export class HolochainApp extends LitElement {
 
   }
 
+  
+
   renderContent() {
     if (this.pageView == PageView.CreateProposal) {
       return html`
@@ -60,10 +60,6 @@ export class HolochainApp extends LitElement {
     } else if (this.pageView == PageView.AllProposals) {
         return html`<all-proposals></all-proposals>`
     }
-  }
-
-  showAllProposals() {
-    return html`<all-proposals></all-proposals>`;
   }
   
   render() {
@@ -83,7 +79,6 @@ export class HolochainApp extends LitElement {
         </body>
         <div class="title-bar">
           <h1>hDAO</h1>
-          <create-proposal-page></create-proposal-page>
         </div>
           ${ this.renderContent() }
         </main>
@@ -121,10 +116,9 @@ export class HolochainApp extends LitElement {
     }
     .title-bar {
       border: 2px solid #183E29;
-      box-shadow: 9px 12px #183E29;
-      background: #FCF1E9;
+      background: #fdd9bf;
       font-family: 'Space Mono';
-      margin: 10px 40px;
+      margin: 10px 70px;
     }
     .button {
       border: none;
