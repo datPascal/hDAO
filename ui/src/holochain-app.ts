@@ -18,6 +18,13 @@ enum PageView {
   CreateProposal,
 }
 
+var currentPage = "CreateProposal";
+
+function currentPageChange(Name: string, currentPage: string) {
+  currentPage = Name;
+  return currentPage
+}
+
 @customElement('holochain-app')
 export class HolochainApp extends LitElement {
   @state() loading = true;
@@ -47,13 +54,13 @@ export class HolochainApp extends LitElement {
   
 
   renderContent() {
-    if (this.pageView == PageView.CreateProposal) {
+    if (currentPage == "CreateProposal") {
       return html`
             <div style="display: flex; flex-direction: column; width: 50%;">
         <create-proposal-page @create-proposal=${()  => this.pageView = PageView.CreateProposal}></create-proposal-page>
       </div>
       `
-    } else if (this.pageView == PageView.AllProposals) {
+    } else if (currentPage == "AllProposals") {
         return html`<all-proposals></all-proposals>`
     }
   }
@@ -69,12 +76,13 @@ export class HolochainApp extends LitElement {
         <main style="width: 100%;">
         <body>
           <nav class="navMenu">
-            <a href='/home/datpascal/Holo/hDAO/ui/src/dao/one_vote_per_user_dao/all-proposals.ts'>All Proposals</a>
+            <a onclick= currentPageChange("AllProposals" , currentPage) >All Proposals</a>
             <a href="./out-tsc/dao/one_vote_per_user_dao/create-proposal-page.ts">Create Proposal</a>
           </nav>
         </body>
         <div class="title-bar">
           <h1>hDAO</h1>
+          <button onclick= currentPageChange("AllProposals" , currentPage)> AllProposals </button>
         </div>
           ${ this.renderContent() }
         </main>
