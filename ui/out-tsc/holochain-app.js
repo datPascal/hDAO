@@ -52,13 +52,12 @@ let HolochainApp = class HolochainApp extends LitElement {
         <main style="width: 100%;">
         <body>
           <nav class="navMenu">
-            <a onclick= currentPageChange("AllProposals" , currentPage) >All Proposals</a>
+            <a href='/home/datpascal/Holo/hDAO/ui/src/dao/one_vote_per_user_dao/all-proposals.ts'>All Proposals</a>
             <a href="./out-tsc/dao/one_vote_per_user_dao/create-proposal-page.ts">Create Proposal</a>
           </nav>
         </body>
         <div class="title-bar">
           <h1>hDAO</h1>
-          <button onclick= currentPageChange("AllProposals" , currentPage)> AllProposals </button>
         </div>
           ${this.renderContent()}
         </main>
