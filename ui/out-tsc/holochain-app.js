@@ -7,21 +7,11 @@ import '@material/mwc-circular-progress';
 import { appWebsocketContext, appInfoContext } from './contexts';
 import './dao/one_vote_per_user_dao/create-proposal-page';
 import './dao/one_vote_per_user_dao/all-proposals';
-var PageView;
-(function (PageView) {
-    PageView[PageView["AllProposals"] = 0] = "AllProposals";
-    PageView[PageView["CreateProposal"] = 1] = "CreateProposal";
-})(PageView || (PageView = {}));
-var currentPage = "HomeScreen";
-function currentPageChange(Name, currentPage) {
-    currentPage = Name;
-    return currentPage;
-}
 let HolochainApp = class HolochainApp extends LitElement {
     constructor() {
         super(...arguments);
         this.loading = true;
-        this.pageView = PageView.CreateProposal;
+        this.currentPage = "HomeScreen";
     }
     async firstUpdated() {
         this.appWebsocket = await AppWebsocket.connect(`ws://localhost:${process.env.HC_PORT}`);
@@ -31,22 +21,22 @@ let HolochainApp = class HolochainApp extends LitElement {
         this.loading = false;
     }
     renderContent() {
-        if (currentPage == "CreateProposal") {
+        if (this.currentPage == "CreateProposal") {
             return html `
             <div style="display: flex; flex-direction: column; width: 50%;">
-        <create-proposal-page @create-proposal=${() => this.pageView = PageView.CreateProposal}></create-proposal-page>
+        <create-proposal-page></create-proposal-page>
       </div>
       `;
         }
-        else if (currentPage == "AllProposals") {
+        else if (this.currentPage == "AllProposals") {
             return html `<all-proposals></all-proposals>`;
         }
         else {
             return html `
       <body>
         <nav class="navMenu">
-          <a href='/home/datpascal/Holo/hDAO/ui/src/dao/one_vote_per_user_dao/all-proposals.ts'>All Proposals</a>
-          <a href="./out-tsc/dao/one_vote_per_user_dao/create-proposal-page.ts">Create Proposal</a>
+          <a @click=${() => { this.currentPage = "AllProposals"; }}>All Proposals</a>
+          <a @click=${() => { this.currentPage = "CreateProposal"; }}>Create Proposal</a>
         </nav>
       </body>`;
         }
@@ -62,6 +52,7 @@ let HolochainApp = class HolochainApp extends LitElement {
         <div class="title-bar">
           <h1>hDAO</h1>
         </div>
+          <button @click=${() => { this.currentPage = "Homescreen"; }}>Home</button>
           ${this.renderContent()}
         </main>
       `;
@@ -195,8 +186,8 @@ __decorate([
     property({ type: Object })
 ], HolochainApp.prototype, "appInfo", void 0);
 __decorate([
-    state()
-], HolochainApp.prototype, "pageView", void 0);
+    property()
+], HolochainApp.prototype, "currentPage", void 0);
 HolochainApp = __decorate([
     customElement('holochain-app')
 ], HolochainApp);

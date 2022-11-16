@@ -13,18 +13,6 @@ import { appWebsocketContext, appInfoContext } from './contexts';
 import './dao/one_vote_per_user_dao/create-proposal-page';
 import './dao/one_vote_per_user_dao/all-proposals';
 
-enum PageView {
-  AllProposals,
-  CreateProposal,
-}
-
-var currentPage = "HomeScreen";
-
-function currentPageChange(Name: string, currentPage: string) {
-  currentPage = Name;
-  return currentPage
-}
-
 @customElement('holochain-app')
 export class HolochainApp extends LitElement {
   @state() loading = true;
@@ -37,8 +25,8 @@ export class HolochainApp extends LitElement {
   @property({ type: Object })
   appInfo!: InstalledAppInfo;
 
-  @state()
-  pageView: PageView = PageView.CreateProposal;
+  @property()
+  currentPage = "HomeScreen";
 
   async firstUpdated() {
     this.appWebsocket = await AppWebsocket.connect(
@@ -54,20 +42,20 @@ export class HolochainApp extends LitElement {
   
 
   renderContent() {
-    if (currentPage == "CreateProposal") {
+    if (this.currentPage == "CreateProposal") {
       return html`
             <div style="display: flex; flex-direction: column; width: 50%;">
-        <create-proposal-page @create-proposal=${()  => this.pageView = PageView.CreateProposal}></create-proposal-page>
+        <create-proposal-page></create-proposal-page>
       </div>
       `
-    } else if (currentPage == "AllProposals") {
+    } else if (this.currentPage == "AllProposals") {
         return html`<all-proposals></all-proposals>`
     } else {
       return html`
       <body>
         <nav class="navMenu">
-          <a href='/home/datpascal/Holo/hDAO/ui/src/dao/one_vote_per_user_dao/all-proposals.ts'>All Proposals</a>
-          <a href="./out-tsc/dao/one_vote_per_user_dao/create-proposal-page.ts">Create Proposal</a>
+          <a @click=${() => {this.currentPage = "AllProposals"}}>All Proposals</a>
+          <a @click=${() => {this.currentPage = "CreateProposal"}}>Create Proposal</a>
         </nav>
       </body>`
     }
@@ -84,6 +72,7 @@ export class HolochainApp extends LitElement {
         <div class="title-bar">
           <h1>hDAO</h1>
         </div>
+          <button @click=${() => {this.currentPage = "Homescreen"}}>Home</button>
           ${ this.renderContent() }
         </main>
       `;
