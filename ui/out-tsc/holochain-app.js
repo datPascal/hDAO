@@ -12,7 +12,7 @@ var PageView;
     PageView[PageView["AllProposals"] = 0] = "AllProposals";
     PageView[PageView["CreateProposal"] = 1] = "CreateProposal";
 })(PageView || (PageView = {}));
-var currentPage = "CreateProposal";
+var currentPage = "HomeScreen";
 function currentPageChange(Name, currentPage) {
     currentPage = Name;
     return currentPage;
@@ -41,6 +41,15 @@ let HolochainApp = class HolochainApp extends LitElement {
         else if (currentPage == "AllProposals") {
             return html `<all-proposals></all-proposals>`;
         }
+        else {
+            return html `
+      <body>
+        <nav class="navMenu">
+          <a href='/home/datpascal/Holo/hDAO/ui/src/dao/one_vote_per_user_dao/all-proposals.ts'>All Proposals</a>
+          <a href="./out-tsc/dao/one_vote_per_user_dao/create-proposal-page.ts">Create Proposal</a>
+        </nav>
+      </body>`;
+        }
     }
     render() {
         if (this.loading)
@@ -50,12 +59,6 @@ let HolochainApp = class HolochainApp extends LitElement {
         else {
             return html `
         <main style="width: 100%;">
-        <body>
-          <nav class="navMenu">
-            <a href='/home/datpascal/Holo/hDAO/ui/src/dao/one_vote_per_user_dao/all-proposals.ts'>All Proposals</a>
-            <a href="./out-tsc/dao/one_vote_per_user_dao/create-proposal-page.ts">Create Proposal</a>
-          </nav>
-        </body>
         <div class="title-bar">
           <h1>hDAO</h1>
         </div>
@@ -87,6 +90,8 @@ HolochainApp.styles = css `
 
     main {
       flex-grow: 1;
+      background: #050505;
+
     }
     ul {
       list-style-type: none;
@@ -94,7 +99,7 @@ HolochainApp.styles = css `
       padding: 0;
     }
     .title-bar {
-      border: 2px solid #183E29;
+      border: 2px solid #fafcfb;
       background: #fdd9bf;
       font-family: 'Space Mono';
       margin: 10px 70px;
@@ -118,7 +123,7 @@ HolochainApp.styles = css `
     }
 
     body {
-      background: #272727;
+      background: #f0eeee;
       font-family: "Montserrat";
     }
 
