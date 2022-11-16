@@ -6,6 +6,7 @@ import {
   ActionHash,
   InstalledAppInfo,
 } from '@holochain/client';
+
 import { contextProvider } from '@lit-labs/context';
 import '@material/mwc-circular-progress';
 
@@ -44,7 +45,7 @@ export class HolochainApp extends LitElement {
   renderContent() {
     if (this.currentPage == "CreateProposal") {
       return html`
-            <div style="display: flex; flex-direction: column; width: 50%;">
+            <div style="display: flex; flex-direction: column; width: 100%;">
         <create-proposal-page></create-proposal-page>
       </div>
       `
@@ -69,10 +70,9 @@ export class HolochainApp extends LitElement {
     else {
       return html`
         <main style="width: 100%;">
-        <div class="title-bar">
-          <h1>hDAO</h1>
-        </div>
-          <button @click=${() => {this.currentPage = "Homescreen"}}>Home</button>
+          <div class="title-bar">
+            <h1 @click=${() => {this.currentPage = "HomeScreen"}}>hDAO</h1>
+          </div>
           ${ this.renderContent() }
         </main>
       `;
@@ -88,15 +88,15 @@ export class HolochainApp extends LitElement {
       justify-content: flex-start;
       font-size: calc(10px + 2vmin);
       color: #1a2b42;
-      max-width: 960px;
       margin: 0 auto;
       text-align: center;
-      background-color: var(--lit-element-background-color);
+      background-color: black;
     }
 
     @font-face {
       font-family: Montserrat;
       src: url(dnas/dao/assets/Montserrat/static/Montserrat-Black.ttf) format("truetype");
+      color: white;
     }
 
     main {
@@ -110,8 +110,8 @@ export class HolochainApp extends LitElement {
       padding: 0;
     }
     .title-bar {
-      border: 2px solid #fafcfb;
-      background: #fdd9bf;
+      border: 2px solid #060707;
+      background: #070707;
       font-family: 'Space Mono';
       margin: 10px 70px;
     }
@@ -134,20 +134,20 @@ export class HolochainApp extends LitElement {
     }
 
     body {
-      background: #f0eeee;
+      background: #020202;
       font-family: "Montserrat";
     }
 
     .navMenu {
       position: absolute;
-      top: 80%;
+      top: 50%;
       left: 50%;
       -webkit-transform: translate(-50%, -50%);
       transform: translate(-50%, -50%);
     }
 
     .navMenu a {
-      color: #000000;
+      color: #f0e8e8;
       text-decoration: none;
       font-size: 1.2em;
       text-transform: uppercase;
