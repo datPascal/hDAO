@@ -109,12 +109,6 @@ export class HolochainApp extends LitElement {
       margin: 0;
       padding: 0;
     }
-    .title-bar {
-      border: 2px solid #060707;
-      background: #070707;
-      font-family: 'Space Mono';
-      margin: 10px 70px;
-    }
     .button {
       border: none;
       color: white;
