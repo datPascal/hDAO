@@ -70,4 +70,5 @@ export class CreateProposalPage extends LitElement {
 
     </div>`;
   }
+
 }

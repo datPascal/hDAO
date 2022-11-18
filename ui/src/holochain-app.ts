@@ -1,6 +1,6 @@
 import { LitElement, css, html } from 'lit';
 import { customElement, property, state } from 'lit/decorators.js';
-import { Styles } from './styles.js';
+import "./dao/components/corp-button.js";
 
 import {
   AppWebsocket,
@@ -73,6 +73,7 @@ export class HolochainApp extends LitElement {
         <main style="width: 100%;">
           <div class="title-bar">
             <h1 style = Styles.blue-button @click=${() => {this.currentPage = "HomeScreen"}}>hDAO</h1>
+            <corp-button>Hello</corp-button>
           </div>
           ${ this.renderContent() }
         </main>

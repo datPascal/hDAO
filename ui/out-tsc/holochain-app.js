@@ -1,6 +1,7 @@
 import { __decorate } from "tslib";
 import { LitElement, css, html } from 'lit';
 import { customElement, property, state } from 'lit/decorators.js';
+import "./dao/components/corp-button.js";
 import { AppWebsocket, } from '@holochain/client';
 import { contextProvider } from '@lit-labs/context';
 import '@material/mwc-circular-progress';
@@ -51,6 +52,7 @@ let HolochainApp = class HolochainApp extends LitElement {
         <main style="width: 100%;">
           <div class="title-bar">
             <h1 style = Styles.blue-button @click=${() => { this.currentPage = "HomeScreen"; }}>hDAO</h1>
+            <corp-button>Hello</corp-button>
           </div>
           ${this.renderContent()}
         </main>
