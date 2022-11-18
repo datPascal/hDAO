@@ -2,6 +2,8 @@ import { __decorate } from "tslib";
 import { LitElement, css, html } from 'lit';
 import { customElement, property, state } from 'lit/decorators.js';
 import "./dao/components/corp-button.js";
+import "./dao/components/textfield.js";
+import "./dao/components/navbarTop.js";
 import { AppWebsocket, } from '@holochain/client';
 import { contextProvider } from '@lit-labs/context';
 import '@material/mwc-circular-progress';
@@ -35,9 +37,10 @@ let HolochainApp = class HolochainApp extends LitElement {
         else {
             return html `
       <body>
-        <nav class="navMenu">
-          <a @click=${() => { this.currentPage = "AllProposals"; }}>All Proposals</a>
-          <a @click=${() => { this.currentPage = "CreateProposal"; }}>Create Proposal</a>
+        <nav>
+          <navbar-top>Smile</navbar-top>
+          <corp-button @click=${() => { this.currentPage = "AllProposals"; }}>All Proposals</corp-button>
+          <corp-button @click=${() => { this.currentPage = "CreateProposal"; }}>Create Proposal</corp-button>
         </nav>
       </body>`;
         }
@@ -50,9 +53,8 @@ let HolochainApp = class HolochainApp extends LitElement {
         else {
             return html `
         <main style="width: 100%;">
-          <div class="title-bar">
-            <h1 style = Styles.blue-button @click=${() => { this.currentPage = "HomeScreen"; }}>hDAO</h1>
-            <corp-button>Hello</corp-button>
+          <div>
+            <h1 @click=${() => { this.currentPage = "HomeScreen"; }}>hDAO</h1>
           </div>
           ${this.renderContent()}
         </main>
@@ -67,53 +69,15 @@ HolochainApp.styles = css `
       flex-direction: column;
       align-items: center;
       justify-content: flex-start;
-      font-size: calc(10px + 2vmin);
-      color: #1a2b42;
+      font-size: calc(12px + 2vmin);
+      color: #061831;
       margin: 0 auto;
       text-align: center;
-      background-color: black;
     }
-
-    @font-face {
-      font-family: Montserrat;
-      src: url(dnas/dao/assets/Montserrat/static/Montserrat-Black.ttf) format("truetype");
-      color: white;
-    }
-
     main {
       flex-grow: 1;
-      background: #050505;
-
+      background: #fdfbfb;
     }
-    ul {
-      list-style-type: none;
-      margin: 0;
-      padding: 0;
-    }
-    .button {
-      border: none;
-      color: white;
-      padding: 15px 32px;
-      text-align: center;
-      text-decoration: none;
-      display: inline-block;
-      font-size: 16px;
-      margin: 4px 2px;
-      cursor: pointer;
-    }
-    * {
-      margin: 0;
-      padding: 0;
-      -webkit-box-sizing: border-box;
-      box-sizing: border-box;
-    }
-
-    body {
-      background: #020202;
-      font-family: "Montserrat";
-    }
-
-    
   `;
 __decorate([
     state()
