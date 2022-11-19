@@ -3,21 +3,37 @@ import { LitElement, html, customElement, css } from "lit-element";
 @customElement("navbar-top")
 export class navbartop extends LitElement {
   static styles = css`
-    .navbar-top {
-      background-color: #e9e5e5;
-      color: black;
-      border: none;
-      border-radius: 4px;
-      padding: 100px 300px;
-      font-size: 16px;
-      margin: 4px 2px;
-      cursor: pointer;
+    .navbartop {
+        width: 100%;
+        margin: auto;
+        padding: 35px 0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: #013f1c;;
+    }
+    .navbartop ul li {
+        list-style: none;
+        display: inline-block;
+        margin: 0 20px;
+        font-size: calc(20px + 2vmin);
+    }
+    .banner {
+        width: 100%;
+        height: 100px;
     }
   `;
 
   render() {
     return html`
-      <button class="navbar-top"><slot></slot></button>
+      <div class= "banner">
+        <div class= "navbartop">
+            <ul>
+                <li><a>Hello</a></li>
+                <li><a>World</a></li>
+            </ul>
+        </div>
+      </div>
     `;
   }
 }

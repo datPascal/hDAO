@@ -58,7 +58,6 @@ export class HolochainApp extends LitElement {
       return html`
       <body>
         <nav>
-          <navbar-top>Smile</navbar-top>
           <corp-button @click=${() => {this.currentPage = "AllProposals"}}>All Proposals</corp-button>
           <corp-button @click=${() => {this.currentPage = "CreateProposal"}}>Create Proposal</corp-button>
         </nav>
@@ -73,10 +72,9 @@ export class HolochainApp extends LitElement {
 
     else {
       return html`
+        <navbar-top></navbar-top>
         <main style="width: 100%;">
-          <div>
             <h1 @click=${() => {this.currentPage = "HomeScreen"}}>hDAO</h1>
-          </div>
           ${ this.renderContent() }
         </main>
       `;
@@ -84,7 +82,9 @@ export class HolochainApp extends LitElement {
 }
 
   static styles = css`
-    :host {
+    main {
+      flex-grow: 1;
+      background: #fdfbfb;
       min-height: 100vh;
       display: flex;
       flex-direction: column;
@@ -94,10 +94,6 @@ export class HolochainApp extends LitElement {
       color: #061831;
       margin: 0 auto;
       text-align: center;
-    }
-    main {
-      flex-grow: 1;
-      background: #fdfbfb;
     }
   `;
 }
