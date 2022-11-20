@@ -36,12 +36,7 @@ let HolochainApp = class HolochainApp extends LitElement {
         }
         else {
             return html `
-      <body>
-        <nav>
-          <corp-button @click=${() => { this.currentPage = "AllProposals"; }}>All Proposals</corp-button>
-          <corp-button @click=${() => { this.currentPage = "CreateProposal"; }}>Create Proposal</corp-button>
-        </nav>
-      </body>`;
+      `;
         }
     }
     render() {
@@ -51,7 +46,14 @@ let HolochainApp = class HolochainApp extends LitElement {
       `;
         else {
             return html `
-        <navbar-top></navbar-top>
+        <div class= "banner">
+        <div class= "navbartop">
+            <ul>
+                <li><a><corp-button @click=${() => { this.currentPage = "AllProposals"; }}>All Proposals</corp-button></a></li>
+                <li><a><corp-button @click=${() => { this.currentPage = "CreateProposal"; }}>Create Proposal</corp-button></a></li>
+            </ul>
+        </div>
+      </div>
         <main style="width: 100%;">
             <h1 @click=${() => { this.currentPage = "HomeScreen"; }}>hDAO</h1>
           ${this.renderContent()}
@@ -73,6 +75,25 @@ HolochainApp.styles = css `
       color: #061831;
       margin: 0 auto;
       text-align: center;
+    }
+    .navbartop {
+        width: 100%;
+        margin: auto;
+        padding: 35px 0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: #013f1c;;
+    }
+    .navbartop ul li {
+        list-style: none;
+        display: inline-block;
+        margin: 0 20px;
+        font-size: calc(20px + 2vmin);
+    }
+    .banner {
+        width: 100%;
+        height: 100px;
     }
   `;
 __decorate([

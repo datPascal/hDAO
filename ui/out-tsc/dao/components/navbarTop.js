@@ -3,6 +3,7 @@ import { LitElement, html, customElement, css } from "lit-element";
 let navbartop = class navbartop extends LitElement {
     render() {
         return html `
+    <body>
       <div class= "banner">
         <div class= "navbartop">
             <ul>
@@ -11,6 +12,7 @@ let navbartop = class navbartop extends LitElement {
             </ul>
         </div>
       </div>
+    <body>
     `;
     }
 };

@@ -26,6 +26,7 @@ export class navbartop extends LitElement {
 
   render() {
     return html`
+    <body>
       <div class= "banner">
         <div class= "navbartop">
             <ul>
@@ -34,6 +35,7 @@ export class navbartop extends LitElement {
             </ul>
         </div>
       </div>
+    <body>
     `;
   }
 }
