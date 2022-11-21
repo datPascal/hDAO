@@ -67,24 +67,29 @@ export class HolochainApp extends LitElement {
 
     else {
       return html`
-        <div class= "banner">
+    <head>
+      
+    </head>
+    <body>
+      <div class= "banner">
         <div class= "navbartop">
-            <ul>
-                <li><a><corp-button @click=${() => {this.currentPage = "AllProposals"}}>All Proposals</corp-button></a></li>
-                <li><a><corp-button @click=${() => {this.currentPage = "CreateProposal"}}>Create Proposal</corp-button></a></li>
-            </ul>
+        <h1 @click=${() => {this.currentPage = "HomeScreen"}}>hDAO</h1>
+          <ul>
+            <li><a><corp-button @click=${() => {this.currentPage = "AllProposals"}}>All Proposals</corp-button></a></li>
+            <li><a><corp-button @click=${() => {this.currentPage = "CreateProposal"}}>Create Proposal</corp-button></a></li>
+          </ul>
         </div>
       </div>
-        <main style="width: 100%;">
-            <h1 @click=${() => {this.currentPage = "HomeScreen"}}>hDAO</h1>
-          ${ this.renderContent() }
-        </main>
+      <div class = "bodyContent">
+      ${ this.renderContent() }
+      </div>
+    </body>
       `;
     }
 }
 
   static styles = css`
-    main {
+    body {
       flex-grow: 1;
       background: #fdfbfb;
       min-height: 100vh;
@@ -92,15 +97,19 @@ export class HolochainApp extends LitElement {
       flex-direction: column;
       align-items: center;
       justify-content: flex-start;
+    }
+    .bodyContent {
+      padding-top: 100px;
+    }
+    h1 {
       font-size: calc(12px + 2vmin);
       color: #061831;
-      margin: 0 auto;
-      text-align: center;
+      padding-left: 10px;
     }
     .navbartop {
         width: 100%;
         margin: auto;
-        padding: 35px 0;
+        padding: 0px 0;
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -114,7 +123,7 @@ export class HolochainApp extends LitElement {
     }
     .banner {
         width: 100%;
-        height: 100px;
+        height: 50px;
     }
   `;
 }

@@ -8,10 +8,11 @@ export class CorpButton extends LitElement {
       color: black;
       border: none;
       border-radius: 4px;
-      padding: 15px 32px;
+      padding: 20px 43px;
       font-size: 16px;
       margin: 4px 2px;
       cursor: pointer;
+      display: flex;
     }
     .corp-button:hover {
       background-color: #aaaaaa;
