@@ -10,6 +10,7 @@ import '@material/mwc-circular-progress';
 import { appWebsocketContext, appInfoContext } from './contexts';
 import './dao/one_vote_per_user_dao/create-proposal-page';
 import './dao/one_vote_per_user_dao/all-proposals';
+import './dao/one_vote_per_user_dao/all-proposals-created-by-user';
 let HolochainApp = class HolochainApp extends LitElement {
     constructor() {
         super(...arguments);
@@ -46,64 +47,171 @@ let HolochainApp = class HolochainApp extends LitElement {
       `;
         else {
             return html `
-    <head>
-      
-    </head>
-    <body>
-      <div class= "banner">
-        <div class= "navbartop">
-        <h1 @click=${() => { this.currentPage = "HomeScreen"; }}>hDAO</h1>
-          <ul>
-            <li><a><corp-button @click=${() => { this.currentPage = "AllProposals"; }}>All Proposals</corp-button></a></li>
-            <li><a><corp-button @click=${() => { this.currentPage = "CreateProposal"; }}>Create Proposal</corp-button></a></li>
-          </ul>
+    <!DOCTYPE html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>hDAO</title>
+    <meta name="description" content="hDAO Application for hApps">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <a class="logo" href="#" @click=${() => { this.currentPage = "HomeScreen"; }}><img src="./dao/images/hDAO-Logo" alt="logo" style="width:200px;height:75px;"/></a>
+        <nav>
+            <ul class="nav__links">
+                <li><a href="#" @click=${() => { this.currentPage = "all-proposals-created-by-user"; }}>My Proposals</a></li>
+                <li><a href="#" @click=${() => { this.currentPage = "AllProposals"; }}>View Proposals</a></li>
+                <li><a href="#" @click=${() => { this.currentPage = "CreateProposal"; }}>TbS</a></li>
+            </ul>
+        </nav>
+        <a class="cta" href="#" @click=${() => { this.currentPage = "CreateProposal"; }}>Create Proposal</a>
+        <p class="menu cta">Menu</p>
+    </header>
+    <div class="overlay">
+        <a class="close">&times;</a>
+        <div class="overlay__content">
+            <a href="#">My Proposals</a>
+            <a href="#">View Proposals</a>
+            <a href="#">TbS</a>
         </div>
-      </div>
-      <div class = "bodyContent">
-      ${this.renderContent()}
-      </div>
-    </body>
+    </div>
+    <script type="text/javascript" src="mobile.js"></script>
+    ${this.renderContent()}
+</body>
+</html>
       `;
         }
     }
 };
 HolochainApp.styles = css `
-    body {
-      flex-grow: 1;
-      background: #fdfbfb;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: flex-start;
-    }
-    .bodyContent {
-      padding-top: 100px;
-    }
-    h1 {
-      font-size: calc(12px + 2vmin);
-      color: #061831;
-      padding-left: 10px;
-    }
-    .navbartop {
-        width: 100%;
-        margin: auto;
-        padding: 0px 0;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        background-color: #013f1c;;
-    }
-    .navbartop ul li {
-        list-style: none;
-        display: inline-block;
-        margin: 0 20px;
-        font-size: calc(20px + 2vmin);
-    }
-    .banner {
-        width: 100%;
-        height: 50px;
-    }
+    * {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30px 10%;
+  background-color: #24252a;
+}
+
+.logo {
+  cursor: pointer;
+}
+
+.nav__links a,
+.cta,
+.overlay__content a {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 500;
+  color: #edf0f1;
+  text-decoration: none;
+}
+
+.nav__links {
+  list-style: none;
+  display: flex;
+}
+
+.nav__links li {
+  padding: 0px 20px;
+}
+
+.nav__links li a {
+  transition: color 0.3s ease 0s;
+}
+
+.nav__links li a:hover {
+  color: #0088a9;
+}
+
+.cta {
+  padding: 9px 25px;
+  background-color: rgba(0, 136, 169, 1);
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: background-color 0.3s ease 0s;
+}
+
+.cta:hover {
+  background-color: rgba(0, 136, 169, 0.8);
+}
+
+/* Mobile Nav */
+
+.menu {
+  display: none;
+}
+
+.overlay {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  background-color: #24252a;
+  overflow-x: hidden;
+  transition: width 0.5s ease 0s;
+}
+
+.overlay--active {
+  width: 100%;
+}
+
+.overlay__content {
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.overlay a {
+  padding: 15px;
+  font-size: 36px;
+  display: block;
+  transition: color 0.3s ease 0s;
+}
+
+.overlay a:hover,
+.overlay a:focus {
+  color: #0088a9;
+}
+.overlay .close {
+  position: absolute;
+  top: 20px;
+  right: 45px;
+  font-size: 60px;
+  color: #edf0f1;
+}
+
+@media screen and (max-height: 450px) {
+  .overlay a {
+    font-size: 20px;
+  }
+  .overlay .close {
+    font-size: 40px;
+    top: 15px;
+    right: 35px;
+  }
+}
+
+@media only screen and (max-width: 800px) {
+  .nav__links,
+  .cta {
+    display: none;
+  }
+  .menu {
+    display: initial;
+  }
+}
   `;
 __decorate([
     state()

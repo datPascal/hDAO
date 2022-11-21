@@ -17,7 +17,6 @@ CorpButton.styles = css `
       font-size: 16px;
       margin: 4px 2px;
       cursor: pointer;
-      display: flex;
     }
     .corp-button:hover {
       background-color: #aaaaaa;

@@ -9,7 +9,7 @@ let textfield = class textfield extends LitElement {
 };
 textfield.styles = css `
     .text-field {
-      background-color: #e9e5e5;
+      background-color: #c9c5c5;
       color: black;
       border: none;
       border-radius: 4px;
