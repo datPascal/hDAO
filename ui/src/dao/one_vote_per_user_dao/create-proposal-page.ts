@@ -1,4 +1,4 @@
-import { LitElement, html } from 'lit';
+import { LitElement, css ,html } from 'lit';
 import { state, customElement } from 'lit/decorators.js';
 import { InstalledCell, ActionHash, Record, AppWebsocket, InstalledAppInfo } from '@holochain/client';
 import { contextProvided } from '@lit-labs/context';
@@ -62,13 +62,17 @@ export class CreateProposalPage extends LitElement {
         <div style="display: flex; flex: 1; flex-direction: column; align-items: center;">
         <h1 style="font-family: 'Space Mono'; color: #183E29">Proposal Creation</h1>
       </div>
-
-          <mwc-textarea outlined label="Proposal Title" @input=${(e: CustomEvent) => { this._content = (e.target as any).value;} }></mwc-textarea>
-          <mwc-textfield outlined label="Proposal Text" @input=${(e: CustomEvent) => { this._title = (e.target as any).value; } }></mwc-textfield>
+          
+          <mwc-textarea class="background" outlined label="Proposal Title" @input=${(e: CustomEvent) => { this._title = (e.target as any).value;} }></mwc-textarea>
+          <mwc-textfield outlined label="Proposal Text" @input=${(e: CustomEvent) => { this._content = (e.target as any).value; } }></mwc-textfield>
 
         <div><button @click=${this.createProposalPage}>Create Proposal</button></div>
 
     </div>`;
   }
+
+  static styles = css`
+  
+`
 
 }

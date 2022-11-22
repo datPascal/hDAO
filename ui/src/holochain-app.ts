@@ -58,6 +58,9 @@ export class HolochainApp extends LitElement {
         return html`<all-proposals></all-proposals>`
     } else {
       return html`
+        <div style="Flexcontainer">
+          <div><all-proposals></all-proposals></div>
+        </div>
       `
     }
   }
@@ -81,26 +84,14 @@ export class HolochainApp extends LitElement {
 <body>
     <header>
         <a class="logo" href="#" @click=${() => {this.currentPage = "HomeScreen"}}><img src="./dao/images/hDAO-Logo" alt="logo" style="width:200px;height:75px;"/></a>
-        <nav>
-            <ul class="nav__links">
-                <li><a href="#" @click=${() => {this.currentPage = "all-proposals-created-by-user"}}>My Proposals</a></li>
-                <li><a href="#" @click=${() => {this.currentPage = "AllProposals"}}>View Proposals</a></li>
-                <li><a href="#" @click=${() => {this.currentPage = "CreateProposal"}}>TbS</a></li>
-            </ul>
-        </nav>
         <a class="cta" href="#" @click=${() => {this.currentPage = "CreateProposal"}}>Create Proposal</a>
         <p class="menu cta">Menu</p>
     </header>
-    <div class="overlay">
-        <a class="close">&times;</a>
-        <div class="overlay__content">
-            <a href="#">My Proposals</a>
-            <a href="#">View Proposals</a>
-            <a href="#">TbS</a>
-        </div>
+    
+    <div class="home-container">
+      ${ this.renderContent() }
     </div>
-    <script type="text/javascript" src="mobile.js"></script>
-    ${ this.renderContent() }
+
 </body>
 </html>
       `;
@@ -125,7 +116,14 @@ header {
 .logo {
   cursor: pointer;
 }
-
+.home-container {
+  width: 100%;
+  display: flex;
+  min-height: 100vh;
+  align-items: center;
+  flex-direction: column;
+  background-color: white;
+}
 .nav__links a,
 .cta,
 .overlay__content a {
@@ -233,6 +231,11 @@ header {
   .menu {
     display: initial;
   }
+}
+.Flexcontainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
   `;
 }

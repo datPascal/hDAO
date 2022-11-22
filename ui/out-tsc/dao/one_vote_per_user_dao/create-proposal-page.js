@@ -1,5 +1,5 @@
 import { __decorate } from "tslib";
-import { LitElement, html } from 'lit';
+import { LitElement, css, html } from 'lit';
 import { state, customElement } from 'lit/decorators.js';
 import { contextProvided } from '@lit-labs/context';
 import { appWebsocketContext, appInfoContext } from '../../contexts';
@@ -38,15 +38,18 @@ let CreateProposalPage = class CreateProposalPage extends LitElement {
         <div style="display: flex; flex: 1; flex-direction: column; align-items: center;">
         <h1 style="font-family: 'Space Mono'; color: #183E29">Proposal Creation</h1>
       </div>
-
-          <mwc-textarea outlined label="Proposal Title" @input=${(e) => { this._content = e.target.value; }}></mwc-textarea>
-          <mwc-textfield outlined label="Proposal Text" @input=${(e) => { this._title = e.target.value; }}></mwc-textfield>
+          
+          <mwc-textarea class="background" outlined label="Proposal Title" @input=${(e) => { this._title = e.target.value; }}></mwc-textarea>
+          <mwc-textfield outlined label="Proposal Text" @input=${(e) => { this._content = e.target.value; }}></mwc-textfield>
 
         <div><button @click=${this.createProposalPage}>Create Proposal</button></div>
 
     </div>`;
     }
 };
+CreateProposalPage.styles = css `
+  
+`;
 __decorate([
     state()
 ], CreateProposalPage.prototype, "_content", void 0);

@@ -29,14 +29,14 @@ let ProposalPageDetail = class ProposalPageDetail extends LitElement {
         return html `
       <div style="display: flex; flex-direction: column">
         <span style="font-size: 18px">ProposalPage</span>
-		  <div style="display: flex; flex-direction: column">
-		    <span><strong></strong></span>
-		    <span style="white-space: pre-line">${this._proposalPage.content}</span>
-		  </div>
-		  <div style="display: flex; flex-direction: column">
-		    <span><strong></strong></span>
-		    <span style="white-space: pre-line">${this._proposalPage.title}</span>
-		  </div>
+        <div style="display: flex; flex-direction: column">
+		      <span><strong></strong></span>
+		      <span style="white-space: pre-line">${this._proposalPage.title}</span>
+		    </div>
+		    <div style="display: flex; flex-direction: column">
+		      <span><strong></strong></span>
+		      <span style="white-space: pre-line">${this._proposalPage.content}</span>
+		    </div>
       </div>
     `;
     }
