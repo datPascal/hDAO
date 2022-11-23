@@ -43,7 +43,6 @@ export class ProposalPageDetail extends LitElement {
     }
     return html`
       <div class="Proposalbox">
-        <span class="title">ProposalPage</span>
         <div class="ProposalboxesInner">
 		      <span><strong></strong></span>
 		      <span class="Proposaltitle">${ this._proposalPage.title }</span>
@@ -58,9 +57,19 @@ export class ProposalPageDetail extends LitElement {
 
   static styles = css`
     .Proposalbox {
-      display: flex; 
       flex-direction: column;
-      width: 600px;
+      flex: 0 0 auto;
+      width: 100%;
+      display: flex;
+      padding: var(--dl-space-space-tripleunit);
+      z-index: 1;
+      box-shadow: 0 8px 26px -4px hsla(0,0%,8%,.15),0 8px 9px -5px hsla(0,0%,8%,.06)!important;
+      margin-top: var(--dl-space-space-tripleunit);
+      align-items: flex-start;
+      border-radius: var(--dl-radius-radius-radius1);
+      flex-direction: column;
+      backdrop-filter: saturate(200%) blur(30px);
+      overflow-wrap: break-word;
     }
     .ProposalboxesInner {
       display: flex; 
@@ -70,12 +79,15 @@ export class ProposalPageDetail extends LitElement {
     }
     .Proposaltitle {
       white-space: pre-line;
+      padding-bottom: 1rem;
+      font-size: 20px;
+      overflow-wrap: break-word;
+      max-width: 100%;
     }
     .Proposalcontent {
       white-space: pre-line;
-    }
-    .title {
-      font-size: 50px;
+      overflow-wrap: break-word;
+      max-width: 100%;
     }
   `;
 }
