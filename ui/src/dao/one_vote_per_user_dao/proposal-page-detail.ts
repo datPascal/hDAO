@@ -1,4 +1,4 @@
-import { LitElement, html } from 'lit';
+import { LitElement, css ,html } from 'lit';
 import { state, customElement, property } from 'lit/decorators.js';
 import { InstalledCell, AppWebsocket, Record, ActionHash, InstalledAppInfo } from '@holochain/client';
 import { contextProvided } from '@lit-labs/context';
@@ -42,17 +42,40 @@ export class ProposalPageDetail extends LitElement {
       </div>`;
     }
     return html`
-      <div style="display: flex; flex-direction: column">
-        <span style="font-size: 18px">ProposalPage</span>
-        <div style="display: flex; flex-direction: column">
+      <div class="Proposalbox">
+        <span class="title">ProposalPage</span>
+        <div class="ProposalboxesInner">
 		      <span><strong></strong></span>
-		      <span style="white-space: pre-line">${this._proposalPage.title }</span>
+		      <span class="Proposaltitle">${ this._proposalPage.title }</span>
 		    </div>
-		    <div style="display: flex; flex-direction: column">
+		    <div class="ProposalboxesInner">
 		      <span><strong></strong></span>
-		      <span style="white-space: pre-line">${ this._proposalPage.content }</span>
+		      <span class="Proposalcontent">${ this._proposalPage.content }</span>
 		    </div>
       </div>
     `;
   }
+
+  static styles = css`
+    .Proposalbox {
+      display: flex; 
+      flex-direction: column;
+      width: 600px;
+    }
+    .ProposalboxesInner {
+      display: flex; 
+      flex-direction: column;
+      border-width: 2;
+      border-color: black;
+    }
+    .Proposaltitle {
+      white-space: pre-line;
+    }
+    .Proposalcontent {
+      white-space: pre-line;
+    }
+    .title {
+      font-size: 50px;
+    }
+  `;
 }

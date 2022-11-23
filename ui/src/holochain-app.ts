@@ -58,8 +58,11 @@ export class HolochainApp extends LitElement {
         return html`<all-proposals></all-proposals>`
     } else {
       return html`
-        <div style="Flexcontainer">
-          <div><all-proposals></all-proposals></div>
+        <div class="Flexcontainer">
+          <div class= "even-columns">
+            <div style="width:600px;">Text</div>
+            <div><all-proposals></all-proposals></div>
+          </div>
         </div>
       `
     }
@@ -79,7 +82,7 @@ export class HolochainApp extends LitElement {
     <title>hDAO</title>
     <meta name="description" content="hDAO Application for hApps">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <header>
@@ -87,7 +90,7 @@ export class HolochainApp extends LitElement {
         <a class="cta" href="#" @click=${() => {this.currentPage = "CreateProposal"}}>Create Proposal</a>
         <p class="menu cta">Menu</p>
     </header>
-    
+
     <div class="home-container">
       ${ this.renderContent() }
     </div>
@@ -235,7 +238,21 @@ header {
 .Flexcontainer {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  --max-width: 1200px;
+  --padding: 1rem;
+  width: min(var(--max-width), 100% - var(--padding));
+  margin-inline: auto;
 }
-  `;
+.even-columns{
+  display: grid;
+  gap: 1rem;
+}
+@media (min-width: 50em){
+  .even-columns{
+    grid-auto-flow: column;
+    grid-auto-columns: 1fr;
+  }
+}
+
+`;
 }
