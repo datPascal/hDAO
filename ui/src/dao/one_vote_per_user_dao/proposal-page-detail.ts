@@ -43,6 +43,7 @@ export class ProposalPageDetail extends LitElement {
     }
     return html`
       <div class="Proposalbox">
+      <div class= "even-columns">
         <div class="ProposalboxesInner">
 		      <span><strong></strong></span>
 		      <span class="Proposaltitle">${ this._proposalPage.title }</span>
@@ -51,6 +52,7 @@ export class ProposalPageDetail extends LitElement {
 		      <span><strong></strong></span>
 		      <span class="Proposalcontent">${ this._proposalPage.content }</span>
 		    </div>
+        </div>
       </div>
     `;
   }
@@ -61,12 +63,12 @@ export class ProposalPageDetail extends LitElement {
       flex: 0 0 auto;
       width: 100%;
       display: flex;
-      padding: var(--dl-space-space-tripleunit);
+      padding: var(2rem);
       z-index: 1;
       box-shadow: 0 8px 26px -4px hsla(0,0%,8%,.15),0 8px 9px -5px hsla(0,0%,8%,.06)!important;
-      margin-top: var(--dl-space-space-tripleunit);
+      margin-top: var(2rem);
       align-items: flex-start;
-      border-radius: var(--dl-radius-radius-radius1);
+      border-radius: var(2rem);
       flex-direction: column;
       backdrop-filter: saturate(200%) blur(30px);
       overflow-wrap: break-word;
@@ -80,14 +82,22 @@ export class ProposalPageDetail extends LitElement {
     .Proposaltitle {
       white-space: pre-line;
       padding-bottom: 1rem;
+      width: 100%;
       font-size: 20px;
       overflow-wrap: break-word;
       max-width: 100%;
+      text-overflow: ellipsis;
     }
     .Proposalcontent {
       white-space: pre-line;
       overflow-wrap: break-word;
       max-width: 100%;
+      text-overflow: ellipsis;
+      width: 100%;
+    }
+    .even-columns{
+      display: grid;
+      gap: 1rem;
     }
   `;
 }

@@ -37,12 +37,7 @@ let HolochainApp = class HolochainApp extends LitElement {
         }
         else {
             return html `
-        <div class="Flexcontainer">
-          <div class= "even-columns">
-            <div style="width:600px;">Text</div>
             <div><all-proposals></all-proposals></div>
-          </div>
-        </div>
       `;
         }
     }
@@ -63,13 +58,14 @@ let HolochainApp = class HolochainApp extends LitElement {
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <header>
+    <header class="headertop">
         <a class="logo" href="#" @click=${() => { this.currentPage = "HomeScreen"; }}><img src="./dao/images/hDAO-Logo" alt="logo" style="width:200px;height:75px;"/></a>
         <a class="cta" href="#" @click=${() => { this.currentPage = "CreateProposal"; }}>Create Proposal</a>
         <p class="menu cta">Menu</p>
     </header>
 
     <div class="home-container">
+      <header style="height:50px; width:100%;"></header>
       ${this.renderContent()}
     </div>
 
@@ -86,7 +82,7 @@ HolochainApp.styles = css `
   padding: 0;
 }
 
-header {
+.headertop {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -98,7 +94,6 @@ header {
   cursor: pointer;
 }
 .home-container {
-  width: 100%;
   display: flex;
   min-height: 100vh;
   align-items: center;
