@@ -29,15 +29,25 @@ let ProposalPageDetail = class ProposalPageDetail extends LitElement {
         return html `
       <div class="Proposalbox">
       <div class= "even-columns">
-        <div class="ProposalboxesInner">
-		      <span><strong></strong></span>
-		      <span class="Proposaltitle">${this._proposalPage.title}</span>
-		    </div>
-		    <div class="ProposalboxesInner">
-		      <span><strong></strong></span>
-		      <span class="Proposalcontent">${this._proposalPage.content}</span>
-		    </div>
+        <div>
+          <div class="ProposalboxesInner">
+            <span><strong></strong></span>
+            <span class="Proposaltitle">${this._proposalPage.title}</span>
+          </div>
+          <div class="ProposalboxesInner">
+            <span><strong></strong></span>
+            <span class="Proposalcontent">${this._proposalPage.content}</span>
+          </div>
         </div>
+        <div class= "ProposalboxesInner">
+          <span class="voting-area">
+            <div class="voting-grid">
+              <a href="#" class="ButtonYes">Yes</a>
+              <a href="#" class="ButtonNo">No</a>
+            </div>
+          </span>
+        </div>
+      </div>
       </div>
     `;
     }
@@ -46,7 +56,8 @@ ProposalPageDetail.styles = css `
     .Proposalbox {
       flex-direction: column;
       flex: 0 0 auto;
-      width: 100%;
+      width: 800px;
+      max-height; 1200;
       display: flex;
       padding: var(2rem);
       z-index: 1;
@@ -57,6 +68,8 @@ ProposalPageDetail.styles = css `
       flex-direction: column;
       backdrop-filter: saturate(200%) blur(30px);
       overflow-wrap: break-word;
+      background-color: #d3d0d0;
+      border-radius: 25px;
     }
     .ProposalboxesInner {
       display: flex; 
@@ -65,25 +78,104 @@ ProposalPageDetail.styles = css `
       border-color: black;
     }
     .Proposaltitle {
+      padding-left: 1rem;
+      padding-top: 1rem;
       white-space: pre-line;
       padding-bottom: 1rem;
-      width: 100%;
-      font-size: 20px;
+      width: 550px;
+      font-size: 25px;
       overflow-wrap: break-word;
       max-width: 100%;
       text-overflow: ellipsis;
+      color: black;
+      align-self: content;
     }
     .Proposalcontent {
+      padding-left: 1rem;
       white-space: pre-line;
       overflow-wrap: break-word;
       max-width: 100%;
       text-overflow: ellipsis;
-      width: 100%;
+      width: 550px;
+      color: black;
+      padding-bottom: 1rem;
+      align-self: content;
+    }
+    .voting-area {
+      padding-left: 1rem;
+      white-space: pre-line;
+      overflow-wrap: break-word;
+      max-width: 100%;
+      text-overflow: ellipsis;
+      width: 200px;
+      color: black;
+      padding-bottom: 1rem;
+      padding-right: 1rem;
+      align-self: voting;
     }
     .even-columns{
       display: grid;
-      gap: 1rem;
+      grid-template-areas:
+        "content voting";
+      grid-template-columns: 3fr 1fr;
+      grid-template-rows: auto;
+      gap: 1fr;
     }
+    .voting-grid{
+      display: grid;
+      grid-template-areas:
+        "Yes No";
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: auto;
+      gap: 1fr 1fr;
+    }
+    .ButtonYes {
+      box-shadow:inset 0px 0px 15px 3px #23395e;
+      background-color:#00882d;
+      border-radius:17px;
+      border:1px solid #0c3b00;
+      display:inline-block;
+      cursor:pointer;
+      color:#ffffff;
+      font-family:Arial;
+      font-size:15px;
+      padding:6px 10px;
+      text-decoration:none;
+      text-shadow:0px 1px 0px #263666;
+      align-self: Yes;
+    }
+    .ButtonYes:hover {
+      background:linear-gradient(to bottom, #415989 5%, #2e466e 100%);
+      background-color:#064101;
+    }
+    .ButtonYes:active {
+      position:relative;
+      top:1px;
+    }
+    .ButtonNo {
+      box-shadow:inset 0px 0px 15px 3px #23395e;
+      background-color:#882000;
+      border-radius:17px;
+      border:1px solid #3a020e;
+      display:inline-block;
+      cursor:pointer;
+      color:#ffffff;
+      font-family:Arial;
+      font-size:15px;
+      padding:6px 10px;
+      text-decoration:none;
+      text-shadow:0px 1px 0px #263666;
+      align-self: no;
+    }
+    .ButtonNo:hover {
+      background:linear-gradient(to bottom, #415989 5%, #2e466e 100%);
+      background-color:#5a0101;
+    }
+    .ButtonNo:active {
+      position:relative;
+      top:1px;
+    }
+
   `;
 __decorate([
     property()

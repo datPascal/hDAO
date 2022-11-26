@@ -34,21 +34,72 @@ let CreateProposalPage = class CreateProposalPage extends LitElement {
     }
     render() {
         return html `
-      <div style="display: flex; flex-direction: column">
-        <div style="display: flex; flex: 1; flex-direction: column; align-items: center;">
+      
+      <div style="display: flex; flex: 1; flex-direction: column; align-items: center;">
         <h1 style="font-family: 'Space Mono'; color: #183E29">Proposal Creation</h1>
+      
+        <div class="Proposalbox">
+          <div class="ProposalboxesInner">
+              <mwc-textfield style="width:700px;" outlined label="Proposal Title" @input=${(e) => { this._title = e.target.value; }}></mwc-textfield>
+              <mwc-textarea style="width:700px;" outlined label="Proposal Text" @input=${(e) => { this._content = e.target.value; }}></mwc-textarea>
+
+              <button @click=${this.createProposalPage}>Create Proposal</button>
+          </div>
+        </div>
       </div>
-          
-          <mwc-textarea class="background" outlined label="Proposal Title" @input=${(e) => { this._title = e.target.value; }}></mwc-textarea>
-          <mwc-textfield outlined label="Proposal Text" @input=${(e) => { this._content = e.target.value; }}></mwc-textfield>
-
-        <div><button @click=${this.createProposalPage}>Create Proposal</button></div>
-
-    </div>`;
+        `;
     }
 };
 CreateProposalPage.styles = css `
-  
+  .Proposalbox {
+      flex-direction: column;
+      flex: 0 0 auto;
+      width: 800px;
+      max-height; 1200;
+      display: flex;
+      padding: var(2rem);
+      z-index: 1;
+      box-shadow: 0 8px 26px -4px hsla(0,0%,8%,.15),0 8px 9px -5px hsla(0,0%,8%,.06)!important;
+      margin-top: var(2rem);
+      align-items: flex-start;
+      border-radius: var(2rem);
+      flex-direction: column;
+      backdrop-filter: saturate(200%) blur(30px);
+      overflow-wrap: break-word;
+      background-color: #d3d0d0;
+      border-radius: 25px;
+      align-items: center;
+    }
+    .ProposalboxesInner {
+      display: flex; 
+      flex-direction: column;
+      border-width: 2;
+      border-color: black;
+    }
+    .Proposaltitle {
+      padding-left: 1rem;
+      padding-top: 1rem;
+      white-space: pre-line;
+      padding-bottom: 1rem;
+      width: 700px;
+      font-size: 25px;
+      overflow-wrap: break-word;
+      max-width: 100%;
+      text-overflow: ellipsis;
+      color: black;
+      align-self: content;
+    }
+    .Proposalcontent {
+      padding-left: 1rem;
+      white-space: pre-line;
+      overflow-wrap: break-word;
+      max-width: 100%;
+      text-overflow: ellipsis;
+      width: 700px;
+      color: black;
+      padding-bottom: 1rem;
+      align-self: content;
+    }
 `;
 __decorate([
     state()
