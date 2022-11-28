@@ -81,7 +81,7 @@ export class HolochainApp extends LitElement {
 </head>
 <body>
     <header class="headertop">
-        <a class="logo" href="#" @click=${() => {this.currentPage = "HomeScreen"}}><img src="./dao/images/hDAO-Logo.png" alt="logo" style="width:200px;height:75px;"/></a>
+        <a class="logo" href="#" @click=${() => {this.currentPage = "HomeScreen"}}><img src="./dao/images/hDAO-Logo" alt="logo" style="width:200px;height:75px;"/></a>
         <a class="cta" href="#" @click=${() => {this.currentPage = "CreateProposal"}}>Create Proposal</a>
         <p class="menu cta">Menu</p>
     </header>
