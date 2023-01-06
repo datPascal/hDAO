@@ -40,10 +40,22 @@ let ProposalPageDetail = class ProposalPageDetail extends LitElement {
           </div>
         </div>
         <div class= "ProposalboxesInner">
+          <div class="author-container">
+            <img src="author-profile-picture.jpg" alt="Author's Profile Picture" class="author-picture">
+            <h3 class="author-name">Author's Name</h3>
+            <p class="author-role">Author's Role</p>
+          </div>
+
           <span class="voting-area">
+            <div class="chart">
+              <div class="yes">
+              </div>
+              <div class="no">
+              </div>
+            </div>
             <div class="voting-grid">
-              <a href="#" class="ButtonYes">Yes</a>
-              <a href="#" class="ButtonNo">No</a>
+              <a href="#" class="green-button">Yes</a>
+              <a href="#" class="red-button">No</a>
             </div>
           </span>
         </div>
@@ -129,53 +141,90 @@ ProposalPageDetail.styles = css `
       grid-template-rows: auto;
       gap: 1fr 1fr;
     }
-    .ButtonYes {
-      box-shadow:inset 0px 0px 15px 3px #23395e;
-      background-color:#00882d;
-      border-radius:17px;
-      border:1px solid #0c3b00;
-      display:inline-block;
-      cursor:pointer;
-      color:#ffffff;
-      font-family:Arial;
-      font-size:15px;
-      padding:6px 10px;
-      text-decoration:none;
-      text-shadow:0px 1px 0px #263666;
-      align-self: Yes;
+    .green-button {
+      background-color: green;
+      border: none;
+      color: white;
+      padding: 15px 32px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      border-radius: 4px;
+      margin: auto; /* this will center the button within the container */
     }
-    .ButtonYes:hover {
-      background:linear-gradient(to bottom, #415989 5%, #2e466e 100%);
-      background-color:#064101;
+    .green-button:hover {
+      background-color: darkgreen;
+      color: white;
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     }
-    .ButtonYes:active {
-      position:relative;
-      top:1px;
+    .red-button {
+      background-color: red;
+      border: none;
+      color: white;
+      padding: 15px 32px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      border-radius: 4px;
+      margin: auto; /* this will center the button within the container */
     }
-    .ButtonNo {
-      box-shadow:inset 0px 0px 15px 3px #23395e;
-      background-color:#882000;
-      border-radius:17px;
-      border:1px solid #3a020e;
-      display:inline-block;
-      cursor:pointer;
-      color:#ffffff;
-      font-family:Arial;
-      font-size:15px;
-      padding:6px 10px;
-      text-decoration:none;
-      text-shadow:0px 1px 0px #263666;
-      align-self: no;
+    .red-button:hover {
+      background-color: darkred;
+      color: white;
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     }
-    .ButtonNo:hover {
-      background:linear-gradient(to bottom, #415989 5%, #2e466e 100%);
-      background-color:#5a0101;
-    }
-    .ButtonNo:active {
-      position:relative;
-      top:1px;
+    .author-container {
+      padding-left: 1rem;
+      align-items: center;
+      margin: 16px 0;
     }
 
+    .author-picture {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      margin-right: 16px;
+    }
+
+    .author-name {
+      font-size: 18px;
+      font-weight: bold;
+      margin: 0;
+    }
+
+    .author-role {
+      font-size: 14px;
+      color: #666;
+      margin: 0;
+    }
+    .chart {
+      display: flex; /* Make the chart a flex container */
+      width: auto; /* Set the width of the chart */
+      height: 30px; /* Set the height of the chart */
+      border: 1px solid #333; /* Add a border to the chart */
+    }
+    
+    /* Style the yes bar */
+    .yes {
+      background-color: green; /* Set the background color to green */
+      width: 50%; /* Set the width of the bar to 50% */
+      height: 100%; /* Make the bar the full height of the chart */
+      text-align: center; /* Center the text inside the bar */
+      line-height: 30px; /* Vertically center the text */
+      color: white; /* Set the text color to white */500px
+    }
+    
+    /* Style the no bar */
+    .no {
+      background-color: red; /* Set the background color to red */
+      width: 50%; /* Set the width of the bar to 50% */
+      height: 100%; /* Make the bar the full height of the chart */
+      text-align: center; /* Center the text inside the bar */
+      line-height: 30px; /* Vertically center the text */
+      color: white; /* Set the text color to white */
+    }
   `;
 __decorate([
     property()

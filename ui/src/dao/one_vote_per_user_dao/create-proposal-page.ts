@@ -61,13 +61,12 @@ export class CreateProposalPage extends LitElement {
       
       <div style="display: flex; flex: 1; flex-direction: column; align-items: center;">
         <h1 style="font-family: 'Space Mono'; color: #183E29">Proposal Creation</h1>
-      
-        <div class="Proposalbox">
-          <div class="ProposalboxesInner">
-              <mwc-textfield style="width:700px;" outlined label="Proposal Title" @input=${(e: CustomEvent) => { this._title = (e.target as any).value;} }></mwc-textfield>
-              <mwc-textarea style="width:700px;" outlined label="Proposal Text" @input=${(e: CustomEvent) => { this._content = (e.target as any).value; } }></mwc-textarea>
 
-              <button @click=${this.createProposalPage}>Create Proposal</button>
+        <div class="article-container">
+          <input type="text" class="article-title" placeholder="Proposal Title" @input=${(e: CustomEvent) => { this._title = (e.target as any).value;} }>
+          <textarea class="article-content" placeholder="Proposal Content" @input=${(e: CustomEvent) => { this._content = (e.target as any).value; } }></textarea>
+          <div style="align-items : center";>
+            <button class="create-proposal-button" @click=${this.createProposalPage} >Create Proposal</button>
           </div>
         </div>
       </div>
@@ -123,7 +122,53 @@ export class CreateProposalPage extends LitElement {
       color: black;
       padding-bottom: 1rem;
       align-self: content;
+
+    }.article-container {
+      font-family: sans-serif;
+      color: grey;
     }
+
+    .article-title {
+      width: 100%;
+      font-size: 18px;
+      padding: 10px;
+      border: none;
+      outline: none;
+      background-color: transparent;
+      color: grey;
+    }
+
+    .article-content {
+      width: 100%;
+      height: 500px;
+      font-size: 16px;
+      padding: 10px;
+      border: none;
+      outline: none;
+      background-color: transparent;
+      color: grey;
+      resize: none;
+    }
+
+    .create-proposal-button {
+      background-color: #4caf50; /* green color */
+      border: none;
+      color: white;
+      padding: 15px 32px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      border-radius: 4px;
+      align-self: middle;
+      margin: auto; /* this will center the button within the container */
+      cursor: pointer;
+    }
+
+    .create-proposal-button:hover {
+      background-color: #3e8e41; /* darker green color on hover */
+    }
+
 `
 
 }
